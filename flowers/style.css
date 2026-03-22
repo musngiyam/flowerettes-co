@@ -2,6 +2,7 @@
 body {
     opacity: 1;
     transition: opacity 0.5s ease;
+    overflow-x: hidden; /* Prevents tiny accidental side-scrolling on mobile */
 }
 * {
     margin: 0;
@@ -16,40 +17,51 @@ body, html {
 
 .hero-section {
     height: 100vh;
+    width: 100%;
     /* Ensure the image name matches your file name exactly */
-    background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), 
-                url('flowers.png') no-repeat center center;
-    background-size: cover;
+    /* background-size: cover is key here */
+    background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), 
+                url('flowers.png') no-repeat center center/cover;
+    
     display: flex;
-    align-items: center;
-    padding-left: 8%;
+    align-items: center;    /* Vertically centers the card */
+    justify-content: center; /* Horizontally centers the card */
+    padding: 20px; 
 }
 
 .hero-content {
-    background: rgba(255, 255, 255, 0.7); 
-    backdrop-filter: blur(8px);
-    padding: 50px;
-    max-width: 500px;
-    border-radius: 15px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.65); /* Keeps it soft and fuzzy */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* For iPhone Safari glass effect */
+    padding: 40px 25px;
+    
+    /* FIX: This ensures the card stays centered and doesn't get too wide or too narrow */
+    width: 90%;
+    max-width: 450px; 
+    
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    text-align: center; 
 }
 
 h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3.5rem;
+    /* Make sure you have this font linked in your HTML <head> */
+    font-family: 'Cormorant Garamond', serif; 
+    font-size: 3.2rem;
     color: #4a3b3b;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    line-height: 1.1;
 }
 
 p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #6d5c5c;
     margin-bottom: 30px;
 }
 
 .btn-shop {
     display: inline-block;
-    padding: 15px 40px;
+    padding: 14px 35px;
     background-color: #d4a3a3; 
     color: white;
     text-decoration: none;
@@ -58,39 +70,43 @@ p {
     transition: 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 1px;
+    border: none;
 }
 
 .btn-shop:hover {
     background-color: #c28e8e;
     transform: translateY(-3px);
 }
-/* --- MOBILE FRONT PAGE STYLES --- */
+
+/* --- MOBILE SPECIFIC FIXES --- */
 
 @media (max-width: 768px) {
+    h1 {
+        font-size: 2.6rem; /* Keeps the title from breaking into too many lines */
+    }
+
     .nav-container {
         flex-direction: column;
         align-items: center;
-        padding: 10px 0; /* Reduced padding for mobile */
+        padding: 10px 0;
     }
 
     .nav-links {
         display: flex;
-        flex-direction: row; /* Keep them in a line */
-        flex-wrap: nowrap;   /* DO NOT let them wrap to a new line */
-        overflow-x: auto;    /* Enable horizontal scroll! */
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
         width: 100%;
         padding: 10px 20px;
         gap: 20px;
-        
-        /* Hide the ugly scrollbar but keep the scrolling action */
         -webkit-overflow-scrolling: touch; 
     }
 
     .nav-links::-webkit-scrollbar {
-        display: none; /* Keeps it clean on mobile */
+        display: none;
     }
 
     .nav-links li {
-        white-space: nowrap; /* Prevents "Mini Flowers" from breaking into two lines */
+        white-space: nowrap;
     }
 }
