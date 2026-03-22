@@ -1,0 +1,96 @@
+/* General Reset */
+body {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+
+.hero-section {
+    height: 100vh;
+    /* Ensure the image name matches your file name exactly */
+    background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), 
+                url('flowers.png') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    padding-left: 8%;
+}
+
+.hero-content {
+    background: rgba(255, 255, 255, 0.7); 
+    backdrop-filter: blur(8px);
+    padding: 50px;
+    max-width: 500px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    color: #4a3b3b;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 1.2rem;
+    color: #6d5c5c;
+    margin-bottom: 30px;
+}
+
+.btn-shop {
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: #d4a3a3; 
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-shop:hover {
+    background-color: #c28e8e;
+    transform: translateY(-3px);
+}
+/* --- MOBILE FRONT PAGE STYLES --- */
+
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0; /* Reduced padding for mobile */
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: row; /* Keep them in a line */
+        flex-wrap: nowrap;   /* DO NOT let them wrap to a new line */
+        overflow-x: auto;    /* Enable horizontal scroll! */
+        width: 100%;
+        padding: 10px 20px;
+        gap: 20px;
+        
+        /* Hide the ugly scrollbar but keep the scrolling action */
+        -webkit-overflow-scrolling: touch; 
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none; /* Keeps it clean on mobile */
+    }
+
+    .nav-links li {
+        white-space: nowrap; /* Prevents "Mini Flowers" from breaking into two lines */
+    }
+}

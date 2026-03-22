@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouquets | Flowerettes & CO.</title>
+    
+    <link rel="stylesheet" href="bouquets.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<div class="page-transition" id="transition-overlay"></div>
+<nav class="main-header">
+    <div class="nav-container">
+        <div class="logo-section">
+            <img src="in.png" alt="Logo" class="logo-img">
+            <div class="brand-text">
+                <span class="brand-name">FLOWERETTES & CO.</span>
+            </div>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="bouquets.html" class="active">Bouquets</a></li>
+            <li><a href="mini-flower.html">Flowers</a></li>
+            <li><a href="keychain.html">Keychains</a></li>
+            <li><a href="garlands.html">Garlands</a></li>
+            <li><a href="cart.html" class="cart-link"><i class="fa-solid fa-cart-shopping"></i></a></li>
+        </ul>
+    </div>
+</nav>
+
+<main class="shop-container">
+    
+    
+    <div class="product-grid">
+        <div class="product-card"><img src="bou1.jpg" alt="Flower" loading="lazy"></div>
+        <div class="product-card"><img src="bou2.jpg" alt="Flower" loading="lazy"></div>
+        <div class="product-card"><img src="flower3.jfif" alt="Flower" loading="lazy"></div>
+        <div class="product-card"><img src="flower4.jfif" alt="Flower" loading="lazy"></div>
+        <div class="product-card"><img src="flower5.jfif" alt="Flower" loading="lazy"></div>
+        <div class="product-card"><img src="bou3.jpg" alt="Flower" loading="lazy"></div>
+        <div class="product-card"><img src="bou4.jpg" alt="Flower" loading="lazy"></div>
+        <div class="product-card"><img src="bou5.jpg" alt="Flower" loading="lazy"></div>
+        <div class="product-card"><img src="yam.jpg" alt="Flower" loading="lazy"></div>
+        
+    </div>
+</main>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const overlay = document.getElementById('transition-overlay');
+        const links = document.querySelectorAll('.nav-links a');
+        const cards = document.querySelectorAll('.product-card');
+
+        // 2. Initial Fade In
+        setTimeout(() => {
+            if(overlay) overlay.classList.add('hidden');
+        }, 100);
+
+        // 3. Combined Filter & Transition Logic
+        links.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const category = link.getAttribute('data-filter');
+                const targetUrl = link.getAttribute('href');
+
+                // If it's a CATEGORY FILTER (stays on page)
+                if (category) {
+                    e.preventDefault();
+                    cards.forEach(card => {
+                        card.classList.remove('fade-in-up');
+                        if (category === 'all' || card.classList.contains(category)) {
+                            card.style.display = 'block';
+                            void card.offsetWidth; 
+                            card.classList.add('fade-in-up');
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                } 
+                // If it's a PAGE LINK (goes to new page)
+                else if (targetUrl && targetUrl !== "#" && !link.href.includes(window.location.pathname)) {
+                    e.preventDefault();
+                    if(overlay) overlay.classList.remove('hidden'); 
+                    setTimeout(() => {
+                        window.location.href = targetUrl;
+                    }, 500);
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

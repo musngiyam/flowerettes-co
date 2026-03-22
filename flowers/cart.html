@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Flowerettes & CO.</title>
+    
+    <link rel="stylesheet" href="cart.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<div class="page-transition" id="transition-overlay"></div>
+
+<nav class="main-header">
+    <div class="nav-container">
+        <div class="logo-section">
+            <img src="in.png" alt="Logo" class="logo-img">
+            <div class="brand-text">
+                <span class="brand-name">FLOWERETTES & CO.</span>
+            </div>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="bouquets.html">Bouquets</a></li>
+            <li><a href="mini-flower.html">Flowers</a></li> 
+            <li><a href="keychain.html">Keychains</a></li>
+            <li><a href="garlands.html">Garlands</a></li>
+            <li><a href="cart.html" class="cart-link active"><i class="fa-solid fa-cart-shopping"></i></a></li>
+        </ul>
+    </div>
+</nav>
+
+<main class="shop-container">
+    <section class="cart-hero">
+        <div class="hero-content">
+            <h1>Contact <span>Us</span></h1>
+            <p>Let’s create something beautiful together. Reach out for a personalized quote, custom wire arrangements, or general inquiries.</p>
+        </div>
+    </section>
+
+    <section class="contact-details">
+        <div class="contact-grid">
+            <div class="info-card">
+                <div class="icon-box"><i class="fa-solid fa-envelope"></i></div>
+                <div class="info-text">
+                    <h3>Email Us</h3>
+                    <p>cransmarymusngi@gmail.com</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="icon-box"><i class="fa-solid fa-phone"></i></div>
+                <div class="info-text">
+                    <h3>Call Us</h3>
+                    <p>+63 953 065 0366</p>
+                    <small>Mon - Sat: 11AM - 8PM</small>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="icon-box"><i class="fa-solid fa-location-dot"></i></div>
+                <div class="info-text">
+                    <h3>Location</h3>
+                    <p>Barangay San Roque Sta Ana,<br>Pampanga 76, Philippines</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="social-connect">
+            <h3>Message for Inquiries!</h3>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/profile.php?id=61578725548093" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/flowerettes.studio/" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+        <div class="map-section">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!3m2!1sen!2sph!4v1774170778788!5m2!1sen!2sph!6m8!1m7!1sC0y28uqxqiDKt5tdDL7rYg!2m2!1d15.11736938839687!2d120.7298698093595!3f3.56117645540278!4f5.758602050727163!5f0.7820865974627469" 
+                width="100%" 
+                height="450" 
+                style="border:0; border-radius: 15px; display: block;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+
+    </section>
+</main>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const overlay = document.getElementById('transition-overlay');
+        setTimeout(() => {
+            if(overlay) overlay.classList.add('hidden');
+        }, 100);
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (link.href.includes('#') || link.href === window.location.href) return;
+                e.preventDefault();
+                const targetUrl = link.href;
+                if(overlay) overlay.classList.remove('hidden'); 
+                setTimeout(() => { window.location.href = targetUrl; }, 500);
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
